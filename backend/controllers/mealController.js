@@ -60,6 +60,21 @@ const addMeal = async (req, res) => {
   }
 };
 
+const getMeals = async (req, res) => {
+  try {
+    const meals = await Meal.find({
+      user: req.user._id
+    }).populate("food");
+
+    res.json(meals);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message
+    });
+  }
+};
+
 module.exports = {
-  addMeal
+  addMeal,
+  getMeals
 };
