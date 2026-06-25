@@ -2,6 +2,7 @@ require("dotenv").config();
 
 const express = require("express");
 const connectDB = require("./config/db");
+const nutritionRoutes = require("./routes/nutritionRoutes");
 
 const app = express();
 
@@ -19,6 +20,10 @@ app.use("/api/auth", require("./routes/authRoutes"));
 app.use("/api/users", require("./routes/userRoutes"));
 
 app.use("/api/foods", require("./routes/foodRoutes"));
+
+app.use("/api/nutrition", nutritionRoutes);
+
+app.use("/api/meals", require("./routes/mealRoutes"));
 
 const PORT = process.env.PORT || 5000;
 

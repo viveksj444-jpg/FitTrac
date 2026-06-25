@@ -8,3 +8,9 @@ dist/
 build/
 
 *.log
+
+
+
+git add .
+git commit -m "Completed Day 6B calorie calculation engine"
+git push
