@@ -1,48 +1,58 @@
 const User = require("../models/User");
-const generateToken = require("../utils/generateToken");
 
-const getCurrentUser = async (req, res) => {
-  res.status(200).json(req.user);
-};
+// Get Profile
+const getProfile = async (req, res) => {
+  try {
+    const user = await User.findById(
+      req.user.id
+    ).select("-password");
 
-const registerUser = async (req, res) => {
-  const { name, email, password } = req.body;
-
-  const user = await User.create({
-    name,
-    email,
-    password
-  });
-
-  res.status(201).json({
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    token: generateToken(user._id)
-  });
-};
-
-const loginUser = async (req, res) => {
-  const { email } = req.body;
-
-  const user = await User.findOne({ email });
-
-  if (!user) {
-    return res.status(401).json({
-      message: "Invalid credentials"
+    res.json(user);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
     });
   }
+};
 
-  res.json({
-    _id: user._id,
-    name: user.name,
-    email: user.email,
-    token: generateToken(user._id)
-  });
+// Update Profile
+const updateProfile = async (req, res) => {
+  try {
+    const {
+      height,
+      weight,
+      age,
+      gender,
+    } = req.body;
+
+    const user = await User.findById(
+      req.user.id
+    );
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    user.height = height;
+    user.weight = weight;
+    user.age = age;
+    user.gender = gender;
+
+    await user.save();
+
+    res.json({
+      message: "Profile Updated",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
 };
 
 module.exports = {
-  getCurrentUser,
-  registerUser,
-  loginUser
+  getProfile,
+  updateProfile,
 };
