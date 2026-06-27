@@ -26,12 +26,57 @@ const calculateBMI = (weight, height) => {
   };
 };
 
+// Calorie Logic
+const calculateCalories = (
+  weight,
+  height,
+  age,
+  gender,
+  goal
+) => {
+  let bmr;
+
+  if (gender === "male") {
+    bmr =
+      10 * weight +
+      6.25 * height -
+      5 * age +
+      5;
+  } else {
+    bmr =
+      10 * weight +
+      6.25 * height -
+      5 * age -
+      161;
+  }
+
+  let calories = bmr;
+
+  if (goal === "lose") {
+    calories = bmr - 500;
+  }
+
+  if (goal === "gain") {
+    calories = bmr + 500;
+  }
+
+  return {
+    bmr: Math.round(bmr),
+    dailyCalories:
+      Math.round(calories),
+  };
+};
+
 // Get Profile
-const getProfile = async (req, res) => {
+const getProfile = async (
+  req,
+  res
+) => {
   try {
-    const user = await User.findById(
-      req.user.id
-    ).select("-password");
+    const user =
+      await User.findById(
+        req.user.id
+      ).select("-password");
 
     res.json(user);
   } catch (error) {
@@ -42,7 +87,10 @@ const getProfile = async (req, res) => {
 };
 
 // Update Profile
-const updateProfile = async (req, res) => {
+const updateProfile = async (
+  req,
+  res
+) => {
   try {
     const {
       height,
@@ -51,15 +99,10 @@ const updateProfile = async (req, res) => {
       gender,
     } = req.body;
 
-    const user = await User.findById(
-      req.user.id
-    );
-
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
+    const user =
+      await User.findById(
+        req.user.id
+      );
 
     user.height = height;
     user.weight = weight;
@@ -69,7 +112,8 @@ const updateProfile = async (req, res) => {
     await user.save();
 
     res.json({
-      message: "Profile Updated",
+      message:
+        "Profile Updated",
     });
   } catch (error) {
     res.status(500).json({
@@ -78,23 +122,50 @@ const updateProfile = async (req, res) => {
   }
 };
 
-// BMI Endpoint
-const getBMI = async (req, res) => {
+// BMI
+const getBMI = async (
+  req,
+  res
+) => {
   try {
-    const user = await User.findById(
-      req.user.id
-    );
+    const user =
+      await User.findById(
+        req.user.id
+      );
 
-    if (!user) {
-      return res.status(404).json({
-        message: "User not found",
-      });
-    }
+    const result =
+      calculateBMI(
+        user.weight,
+        user.height
+      );
 
-    const result = calculateBMI(
-      user.weight,
-      user.height
-    );
+    res.json(result);
+  } catch (error) {
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
+// Calories
+const getCalories = async (
+  req,
+  res
+) => {
+  try {
+    const user =
+      await User.findById(
+        req.user.id
+      );
+
+    const result =
+      calculateCalories(
+        user.weight,
+        user.height,
+        user.age,
+        user.gender,
+        user.goal
+      );
 
     res.json(result);
   } catch (error) {
@@ -108,4 +179,5 @@ module.exports = {
   getProfile,
   updateProfile,
   getBMI,
+  getCalories,
 };

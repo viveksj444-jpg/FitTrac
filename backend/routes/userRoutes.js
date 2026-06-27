@@ -4,6 +4,7 @@ const {
   getProfile,
   updateProfile,
   getBMI,
+  getCalories,
 } = require(
   "../controllers/userController"
 );
@@ -32,6 +33,12 @@ router.get(
   "/bmi",
   protect,
   getBMI
+);
+
+router.get(
+  "/calories",
+  protect,
+  getCalories
 );
 
 module.exports = router;
