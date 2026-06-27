@@ -15,8 +15,12 @@ const Profile = () => {
       gender: "male",
     });
 
+  const [bmi, setBMI] =
+    useState(null);
+
   useEffect(() => {
     fetchProfile();
+    fetchBMI();
   }, []);
 
   const fetchProfile =
@@ -38,6 +42,30 @@ const Profile = () => {
           );
 
         setProfile(res.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+  const fetchBMI =
+    async () => {
+      try {
+        const token =
+          localStorage.getItem(
+            "token"
+          );
+
+        const res =
+          await API.get(
+            "/users/bmi",
+            {
+              headers: {
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+
+        setBMI(res.data);
       } catch (error) {
         console.log(error);
       }
@@ -71,6 +99,8 @@ const Profile = () => {
           }
         );
 
+        await fetchBMI();
+
         alert(
           "Profile Updated"
         );
@@ -85,6 +115,20 @@ const Profile = () => {
 
       <h2>Profile</h2>
 
+      {bmi && (
+        <div>
+          <h3>
+            BMI: {bmi.bmi}
+          </h3>
+
+          <h3>
+            Status:
+            {" "}
+            {bmi.category}
+          </h3>
+        </div>
+      )}
+
       <form
         onSubmit={
           handleSubmit
@@ -93,11 +137,11 @@ const Profile = () => {
         <input
           type="number"
           name="height"
-          placeholder="Height"
           value={profile.height}
           onChange={
             handleChange
           }
+          placeholder="Height"
         />
 
         <br />
@@ -106,11 +150,11 @@ const Profile = () => {
         <input
           type="number"
           name="weight"
-          placeholder="Weight"
           value={profile.weight}
           onChange={
             handleChange
           }
+          placeholder="Weight"
         />
 
         <br />
@@ -119,11 +163,11 @@ const Profile = () => {
         <input
           type="number"
           name="age"
-          placeholder="Age"
           value={profile.age}
           onChange={
             handleChange
           }
+          placeholder="Age"
         />
 
         <br />

@@ -3,6 +3,7 @@ const express = require("express");
 const {
   getProfile,
   updateProfile,
+  getBMI,
 } = require(
   "../controllers/userController"
 );
@@ -25,6 +26,12 @@ router.put(
   "/profile",
   protect,
   updateProfile
+);
+
+router.get(
+  "/bmi",
+  protect,
+  getBMI
 );
 
 module.exports = router;
