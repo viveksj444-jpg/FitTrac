@@ -7,6 +7,8 @@ const protect = async (
 ) => {
   let token;
 
+  console.log(req.headers.authorization);
+
   if (
     req.headers.authorization &&
     req.headers.authorization.startsWith(

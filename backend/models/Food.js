@@ -1,61 +1,56 @@
 const mongoose = require("mongoose");
 
-const foodSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true
+const nutritionSchema = new mongoose.Schema(
+  {
+    calories: Number,
+    protein: Number,
+    carbs: Number,
+    fat: Number
   },
+  { _id: false }
+);
 
-  category: {
-    type: String,
-    required: true
+const servingSchema = new mongoose.Schema(
+  {
+    name: String,
+    capacity: String,
+    calories: Number,
+    protein: Number,
+    carbs: Number,
+    fat: Number
   },
+  { _id: false }
+);
 
-  unitType: {
-    type: String,
-    enum: ["piece", "gram", "serving","volume"],
-    required: true
-  },
-
-  caloriesPer100g: Number,
-  proteinPer100g: Number,
-  carbsPer100g: Number,
-  fatPer100g: Number,
-
-  sizes: {
-    small: {
-      calories: Number,
-      protein: Number,
-      carbs: Number,
-      fat: Number
+const foodSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+      unique: true
     },
 
-    medium: {
-      calories: Number,
-      protein: Number,
-      carbs: Number,
-      fat: Number
+    category: {
+      type: String
     },
 
-    large: {
-      calories: Number,
-      protein: Number,
-      carbs: Number,
-      fat: Number
-    }
+    unitType: {
+      type: String
+    },
+
+    nutritionPer100: nutritionSchema,
+
+    sizes: {
+      small: nutritionSchema,
+      medium: nutritionSchema,
+      large: nutritionSchema
+    },
+
+    servings: [servingSchema]
   },
-
-  servings: [
-    {
-      name: String,
-      capacity: String,
-
-      calories: Number,
-      protein: Number,
-      carbs: Number,
-      fat: Number
-    }
-  ]
-});
+  {
+    timestamps: true
+  }
+);
 
 module.exports = mongoose.model("Food", foodSchema);

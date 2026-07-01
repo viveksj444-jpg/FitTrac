@@ -8,7 +8,7 @@ const addMeal = async (req, res) => {
       size,
       grams,
       serving,
-      quantity,
+      quantity = 1,
       mealType
     } = req.body;
 
@@ -25,20 +25,72 @@ const addMeal = async (req, res) => {
     let carbs = 0;
     let fat = 0;
 
-    // Piece Foods
+    // Piece foods (Banana)
     if (food.unitType === "piece") {
-      calories = food.sizes[size].calories * quantity;
-      protein = food.sizes[size].protein * quantity;
-      carbs = food.sizes[size].carbs * quantity;
-      fat = food.sizes[size].fat * quantity;
+      const selectedSize = food.sizes[size];
+
+      if (!selectedSize) {
+        return res.status(400).json({
+          message: "Invalid size"
+        });
+      }
+
+      calories = selectedSize.calories * quantity;
+      protein = selectedSize.protein * quantity;
+      carbs = selectedSize.carbs * quantity;
+      fat = selectedSize.fat * quantity;
     }
 
-    // Gram Foods
-    if (food.unitType === "gram") {
-      calories = (food.caloriesPer100g * grams) / 100;
-      protein = (food.proteinPer100g * grams) / 100;
-      carbs = (food.carbsPer100g * grams) / 100;
-      fat = (food.fatPer100g * grams) / 100;
+    // Gram foods (Rice, Milk, Soya)
+    else if (
+      food.unitType === "gram" ||
+      food.unitType === "volume"
+    ) {
+      if (!grams) {
+        return res.status(400).json({
+          message: "Grams required"
+        });
+      }
+
+      calories =
+        (food.nutritionPer100.calories * grams) / 100;
+
+      protein =
+        (food.nutritionPer100.protein * grams) / 100;
+
+      carbs =
+        (food.nutritionPer100.carbs * grams) / 100;
+
+      fat =
+        (food.nutritionPer100.fat * grams) / 100;
+    }
+
+    // Serving foods (Dal Tadka)
+    else if (food.unitType === "serving") {
+      const selectedServing =
+        food.servings.find(
+          s =>
+            s.name.toLowerCase() ===
+            serving.toLowerCase()
+        );
+
+      if (!selectedServing) {
+        return res.status(400).json({
+          message: "Invalid serving"
+        });
+      }
+
+      calories =
+        selectedServing.calories * quantity;
+
+      protein =
+        selectedServing.protein * quantity;
+
+      carbs =
+        selectedServing.carbs * quantity;
+
+      fat =
+        selectedServing.fat * quantity;
     }
 
     const meal = await Meal.create({
@@ -52,7 +104,11 @@ const addMeal = async (req, res) => {
       fat
     });
 
-    res.status(201).json(meal);
+    res.status(201).json({
+      success: true,
+      meal
+    });
+
   } catch (error) {
     res.status(500).json({
       message: error.message
@@ -66,7 +122,12 @@ const getMeals = async (req, res) => {
       user: req.user._id
     }).populate("food");
 
-    res.json(meals);
+    res.status(200).json({
+      success: true,
+      count: meals.length,
+      meals
+    });
+
   } catch (error) {
     res.status(500).json({
       message: error.message
