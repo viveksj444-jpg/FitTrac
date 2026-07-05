@@ -1,15 +1,20 @@
+import "./DashboardHeader.css";
+
 const DashboardHeader = ({ user }) => {
+  const today = new Date().toLocaleDateString("en-US", {
+    weekday: "long",
+    month: "short",
+    day: "numeric",
+  });
+
   return (
-    <div
-      style={{
-        background: "#fff",
-        padding: "20px",
-        borderRadius: "12px",
-        boxShadow: "0 2px 8px rgba(0,0,0,0.08)",
-      }}
-    >
-      <h1>Welcome {user?.name} 👋</h1>
-      <p>Track your daily calories and stay healthy.</p>
+    <div className="dashboard-header">
+      <div>
+        <h1>Welcome {user?.name} 👋</h1>
+        <p>Track your daily calories and stay healthy.</p>
+      </div>
+
+      <div className="dashboard-date">{today}</div>
     </div>
   );
 };

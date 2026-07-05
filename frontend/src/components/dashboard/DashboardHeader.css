@@ -1,0 +1,28 @@
+.dashboard-header {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 38px;
+}
+
+.dashboard-header p {
+  margin-top: 10px;
+  color: #777;
+  font-size: 18px;
+}
+
+.dashboard-date {
+  font-size: 18px;
+  color: #777;
+  font-weight: 600;
+}
