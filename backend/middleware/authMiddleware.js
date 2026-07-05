@@ -27,8 +27,11 @@ const protect = async (
       );
 
       req.user = {
-        id: decoded.id,
+        _id: decoded.id,
       };
+
+      console.log("Decoded User:", req.user);
+      console.log("Auth Header:", req.headers.authorization);
 
       next();
     } catch (error) {
