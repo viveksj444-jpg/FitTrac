@@ -1,0 +1,45 @@
+.action-button {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  width: 100%;
+
+  padding: 18px;
+
+  border: none;
+  border-radius: 16px;
+
+  background: white;
+
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.action-button:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.12);
+}
+
+.action-icon {
+  font-size: 32px;
+  color: #4CAF50;
+}
+
+.action-content {
+  text-align: left;
+}
+
+.action-content h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.action-content p {
+  margin-top: 5px;
+  color: #777;
+  font-size: 14px;
+}

@@ -1,0 +1,36 @@
+.quick-actions {
+  margin-top: 40px;
+
+  background: white;
+
+  padding: 30px;
+
+  border-radius: 18px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.quick-header {
+  margin-bottom: 25px;
+}
+
+.quick-header h2 {
+  margin: 0;
+}
+
+.quick-header p {
+  margin-top: 8px;
+  color: #777;
+}
+
+.quick-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .quick-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,8 +1,8 @@
 .macro-card {
-  background: #fff;
+  background: var(--card);
   padding: 22px;
-  border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
 }
 
 .macro-header {

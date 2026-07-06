@@ -1,0 +1,42 @@
+.today-meals {
+  margin-top: 40px;
+
+  background: white;
+
+  border-radius: 18px;
+
+  padding: 30px;
+
+  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+
+.today-meals-header{
+  margin-bottom:30px;
+}
+
+.today-meals-header h2{
+  margin:0;
+}
+
+.today-meals-header p{
+  margin-top:8px;
+  color:#777;
+}
+
+.meal-sections{
+  display:grid;
+
+  grid-template-columns:repeat(2,1fr);
+
+  gap:25px;
+}
+
+@media(max-width:900px){
+
+.meal-sections{
+
+grid-template-columns:1fr;
+
+}
+
+}
