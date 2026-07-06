@@ -1,48 +1,54 @@
 import "./QuickActions.css";
 
-import { FaUtensils, FaTint, FaRunning } from "react-icons/fa";
-
-import { useNavigate } from "react-router-dom";
+import {
+  FaUtensils,
+  FaTint,
+  FaRunning,
+  FaChartBar,
+} from "react-icons/fa";
 
 import ActionButton from "./ActionButton";
 
+const actions = [
+  {
+    title: "Add Meal",
+    icon: <FaUtensils />,
+    to: "/meals/add",
+  },
+  {
+    title: "Water",
+    icon: <FaTint />,
+    to: "/water",
+  },
+  {
+    title: "Exercise",
+    icon: <FaRunning />,
+    to: "/exercise",
+  },
+  {
+    title: "Reports",
+    icon: <FaChartBar />,
+    to: "/reports",
+  },
+];
+
 const QuickActions = () => {
-  const navigate = useNavigate();
-
   return (
-    <div className="quick-actions">
-
-      <div className="quick-header">
-        <h2>⚡ Quick Actions</h2>
-        <p>Frequently used shortcuts</p>
+    <section className="quick-actions">
+      <div className="quick-actions-header">
+        <h2>Quick Actions</h2>
+        <p>Access your most-used fitness tools.</p>
       </div>
 
-      <div className="quick-grid">
-
-        <ActionButton
-          icon={<FaUtensils />}
-          title="Add Meal"
-          subtitle="Log your food intake"
-          onClick={() => navigate("/add-meal")}
-        />
-
-        <ActionButton
-          icon={<FaTint />}
-          title="Water Tracker"
-          subtitle="Coming Soon"
-          onClick={() => alert("Water Tracker Coming Soon")}
-        />
-
-        <ActionButton
-          icon={<FaRunning />}
-          title="Exercise"
-          subtitle="Coming Soon"
-          onClick={() => alert("Exercise Tracker Coming Soon")}
-        />
-
+      <div className="quick-actions-grid">
+        {actions.map((action) => (
+          <ActionButton
+            key={action.title}
+            {...action}
+          />
+        ))}
       </div>
-
-    </div>
+    </section>
   );
 };
 

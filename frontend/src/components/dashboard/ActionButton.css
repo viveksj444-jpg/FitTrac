@@ -1,45 +1,68 @@
 .action-button {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-
   width: 100%;
-
-  padding: 18px;
-
+  background: var(--card);
   border: none;
-  border-radius: 16px;
-
-  background: white;
-
+  border-radius: var(--radius);
+  padding: 20px;
   cursor: pointer;
 
-  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
 
-  box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  transition: transform 0.25s ease,
+              box-shadow 0.25s ease,
+              background 0.25s ease;
+
+  box-shadow: var(--shadow);
 }
 
 .action-button:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 25px rgba(0,0,0,.12);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+}
+
+.action-button:active {
+  transform: translateY(-1px);
 }
 
 .action-icon {
-  font-size: 32px;
-  color: #4CAF50;
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(76, 175, 80, 0.12);
+
+  color: var(--primary);
+  font-size: 26px;
+
+  transition: 0.25s;
 }
 
-.action-content {
-  text-align: left;
+.action-button:hover .action-icon {
+  transform: scale(1.08);
 }
 
-.action-content h3 {
-  margin: 0;
-  font-size: 18px;
+.action-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
 }
 
-.action-content p {
-  margin-top: 5px;
-  color: #777;
-  font-size: 14px;
+@media (max-width: 768px) {
+  .action-button {
+    padding: 18px;
+  }
+
+  .action-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
 }
