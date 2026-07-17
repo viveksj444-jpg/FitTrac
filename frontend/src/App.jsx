@@ -7,9 +7,10 @@ import {
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
+import Profile from "./pages/Profile";
+import AddMeal from "./pages/AddMeal";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
-import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             </ProtectedRoute>
           }
         />
+
         <Route
           path="/profile"
           element={
@@ -41,7 +43,16 @@ function App() {
               <Profile />
             </ProtectedRoute>
           }
-/>
+        />
+
+        <Route
+          path="/add-meal"
+          element={
+            <ProtectedRoute>
+              <AddMeal />
+            </ProtectedRoute>
+          }
+        />
 
       </Routes>
     </BrowserRouter>

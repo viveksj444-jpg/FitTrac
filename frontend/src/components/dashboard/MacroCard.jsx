@@ -5,7 +5,7 @@ const MacroCard = ({ title, consumed, goal, progress, color }) => {
     <div className="macro-card">
       <div className="macro-header">
         <h3>{title}</h3>
-        <span>{consumed} g</span>
+        <span>{Number(consumed).toFixed(1).replace(/\.0$/, "")} g</span>
       </div>
 
       <div className="progress-bar">

@@ -30,7 +30,23 @@ const MealSection = ({ title, emoji, meals = [] }) => {
               <div>
                 <h4>{meal.food.name}</h4>
 
-                <p>Quantity: {meal.quantity}</p>
+                <p>
+                  {meal.food ? (
+                    <>
+                      {(meal.food.unitType === "gram" || meal.food.unitType === "volume") && (
+                        `Weight: ${meal.grams || meal.quantity * 100} ${meal.food.unitType === "volume" ? "ml" : "g"}`
+                      )}
+                      {meal.food.unitType === "piece" && (
+                        `Quantity: ${meal.quantity}${meal.size ? ` (${meal.size})` : ""}`
+                      )}
+                      {meal.food.unitType === "serving" && (
+                        `Quantity: ${meal.quantity}${meal.serving ? ` (${meal.serving})` : ""}`
+                      )}
+                    </>
+                  ) : (
+                    `Quantity: ${meal.quantity}`
+                  )}
+                </p>
               </div>
 
               <strong>{meal.calories} kcal</strong>

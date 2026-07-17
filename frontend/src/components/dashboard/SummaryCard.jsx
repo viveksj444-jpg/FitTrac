@@ -6,7 +6,7 @@ const SummaryCard = ({ title, value, unit }) => {
       <h4>{title}</h4>
 
       <h2>
-        {value} <span>{unit}</span>
+        {typeof value === "number" ? Number(value).toFixed(1).replace(/\.0$/, "") : value} <span>{unit}</span>
       </h2>
     </div>
   );

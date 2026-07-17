@@ -25,6 +25,10 @@ const mealSchema = new mongoose.Schema(
       required: true
     },
 
+    grams: Number,
+    size: String,
+    serving: String,
+
     calories: Number,
     protein: Number,
     carbs: Number,

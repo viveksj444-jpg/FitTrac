@@ -34,6 +34,10 @@ const Navbar = () => {
           Dashboard
         </Link>
 
+        <Link to="/add-meal">
+          Add Meal
+        </Link>
+
         <Link to="/profile">
           Profile
         </Link>

@@ -42,7 +42,7 @@ const CalorieProgress = ({ consumed, goal, remaining, progress }) => {
 
         <div className="progress-text">
           <h1>{progress}%</h1>
-          <p>{consumed} kcal</p>
+          <p>{Number(consumed).toFixed(1).replace(/\.0$/, "")} kcal</p>
         </div>
       </div>
 
@@ -52,7 +52,7 @@ const CalorieProgress = ({ consumed, goal, remaining, progress }) => {
         </p>
 
         <p>
-          Remaining: <strong>{remaining} kcal</strong>
+          Remaining: <strong>{Number(remaining).toFixed(1).replace(/\.0$/, "")} kcal</strong>
         </p>
       </div>
     </div>

@@ -55,7 +55,20 @@ const foods = [
   },
 
   {
-    name: "Soya Chunks",
+    name: "Soya Chunks (Cooked)",
+    category: "Protein",
+    unitType: "gram",
+
+    nutritionPer100: {
+      calories: 120,
+      protein: 18,
+      carbs: 13,
+      fat: 0.2
+    }
+  },
+
+  {
+    name: "Soya Chunks (Dry)",
     category: "Protein",
     unitType: "gram",
 
