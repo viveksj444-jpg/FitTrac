@@ -19,9 +19,16 @@ const AddExercise = () => {
 
   // Form states
   const [duration, setDuration] = useState(30);
+  const [intensity, setIntensity] = useState("moderate"); // light, moderate, vigorous
   const [customName, setCustomName] = useState("");
   const [customCategory, setCustomCategory] = useState("Cardio");
   const [customCalories, setCustomCalories] = useState(150);
+
+  const intensityLabels = {
+    light: "Light",
+    moderate: "Moderate",
+    vigorous: "Vigorous/Heavy"
+  };
 
   // Submit states
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -55,6 +62,13 @@ const AddExercise = () => {
     ex.category.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const getSelectedMet = () => {
+    if (!selectedExercise) return 0;
+    return selectedExercise.intensities[intensity];
+  };
+
+  const selectedMet = getSelectedMet();
+
   // Calculate calories burned preview
   const getCaloriesPreview = () => {
     if (isCustom) {
@@ -62,13 +76,14 @@ const AddExercise = () => {
     }
     if (!selectedExercise) return 0;
     // MET formula: Burned = Duration * MET * 3.5 * weight / 200
-    return Math.round((duration * selectedExercise.met * 3.5 * userWeight) / 200);
+    return Math.round((duration * selectedMet * 3.5 * userWeight) / 200);
   };
 
   const caloriesPreview = getCaloriesPreview();
 
   const handleExerciseSelect = (ex) => {
     setSelectedExercise(ex);
+    setIntensity("moderate");
     setIsCustom(false);
     setSubmitError("");
   };
@@ -119,9 +134,9 @@ const AddExercise = () => {
         payload.category = customCategory;
         payload.caloriesBurned = Number(customCalories);
       } else {
-        payload.name = selectedExercise.name;
+        payload.name = `${selectedExercise.name} (${intensityLabels[intensity]})`;
         payload.category = selectedExercise.category;
-        payload.met = selectedExercise.met;
+        payload.met = selectedMet;
       }
 
       await addExercise(payload);
@@ -188,7 +203,7 @@ const AddExercise = () => {
                       <span className="exercise-emoji">{getExerciseEmoji(ex.name)}</span>
                       <div className="exercise-info">
                         <span className="exercise-name">{ex.name}</span>
-                        <span className="exercise-category">{ex.category} (MET: {ex.met})</span>
+                        <span className="exercise-category">{ex.category}</span>
                       </div>
                       {selectedExercise?.name === ex.name && <span className="check-icon">✓</span>}
                     </div>
@@ -227,6 +242,36 @@ const AddExercise = () => {
                     onWheel={(e) => e.target.blur()}
                   />
                 </div>
+
+                {/* Intensity selector buttons */}
+                {!isCustom && selectedExercise && (
+                  <div className="form-group">
+                    <label className="input-label">Workout Intensity</label>
+                    <div className="intensity-selector">
+                      <button
+                        type="button"
+                        className={`intensity-btn ${intensity === "light" ? "active" : ""}`}
+                        onClick={() => setIntensity("light")}
+                      >
+                        Light (MET: {selectedExercise.intensities.light})
+                      </button>
+                      <button
+                        type="button"
+                        className={`intensity-btn ${intensity === "moderate" ? "active" : ""}`}
+                        onClick={() => setIntensity("moderate")}
+                      >
+                        Moderate (MET: {selectedExercise.intensities.moderate})
+                      </button>
+                      <button
+                        type="button"
+                        className={`intensity-btn ${intensity === "vigorous" ? "active" : ""}`}
+                        onClick={() => setIntensity("vigorous")}
+                      >
+                        Vigorous/Heavy (MET: {selectedExercise.intensities.vigorous})
+                      </button>
+                    </div>
+                  </div>
+                )}
 
                 {/* Custom exercise fields */}
                 {isCustom && (
@@ -283,7 +328,7 @@ const AddExercise = () => {
                   
                   {!isCustom && selectedExercise && (
                     <div className="met-info-box" style={{ fontSize: "14px", color: "var(--text-light)", textAlign: "center", marginTop: "10px" }}>
-                      Calculated dynamically using standard MET {selectedExercise.met} for your weight of <strong>{userWeight} kg</strong>.
+                      Calculated dynamically using standard MET {selectedMet} for your weight of <strong>{userWeight} kg</strong>.
                     </div>
                   )}
                 </div>

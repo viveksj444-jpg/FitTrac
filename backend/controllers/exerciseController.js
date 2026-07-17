@@ -2,20 +2,61 @@ const Exercise = require("../models/Exercise");
 const User = require("../models/User");
 
 const exerciseTypes = [
-  { name: "Running (Moderate)", category: "Cardio", met: 8.3 },
-  { name: "Running (Vigorous)", category: "Cardio", met: 11.5 },
-  { name: "Walking (Moderate)", category: "Cardio", met: 3.5 },
-  { name: "Walking (Brisk)", category: "Cardio", met: 4.5 },
-  { name: "Cycling (Moderate)", category: "Cardio", met: 7.5 },
-  { name: "Cycling (Vigorous)", category: "Cardio", met: 10.0 },
-  { name: "Swimming (Light/Moderate)", category: "Cardio", met: 5.8 },
-  { name: "Swimming (Vigorous)", category: "Cardio", met: 9.8 },
-  { name: "Weightlifting (Light/Moderate)", category: "Strength", met: 3.5 },
-  { name: "Weightlifting (Vigorous)", category: "Strength", met: 6.0 },
-  { name: "Yoga", category: "Flexibility", met: 2.5 },
-  { name: "Pilates", category: "Flexibility", met: 3.0 },
-  { name: "HIIT", category: "Cardio", met: 8.0 },
-  { name: "Jump Rope", category: "Cardio", met: 11.0 }
+  {
+    name: "Running",
+    category: "Cardio",
+    intensities: { light: 6.0, moderate: 8.3, vigorous: 11.5 }
+  },
+  {
+    name: "Walking",
+    category: "Cardio",
+    intensities: { light: 2.5, moderate: 3.5, vigorous: 4.5 }
+  },
+  {
+    name: "Cycling",
+    category: "Cardio",
+    intensities: { light: 5.5, moderate: 7.5, vigorous: 10.0 }
+  },
+  {
+    name: "Swimming",
+    category: "Cardio",
+    intensities: { light: 4.0, moderate: 5.8, vigorous: 9.8 }
+  },
+  {
+    name: "Weightlifting",
+    category: "Strength",
+    intensities: { light: 3.0, moderate: 3.5, vigorous: 6.0 }
+  },
+  {
+    name: "Gym Workout",
+    category: "Strength",
+    intensities: { light: 3.0, moderate: 5.5, vigorous: 8.0 }
+  },
+  {
+    name: "Calisthenics",
+    category: "Strength",
+    intensities: { light: 3.5, moderate: 5.0, vigorous: 8.0 }
+  },
+  {
+    name: "Yoga",
+    category: "Flexibility",
+    intensities: { light: 2.0, moderate: 2.5, vigorous: 4.0 }
+  },
+  {
+    name: "Pilates",
+    category: "Flexibility",
+    intensities: { light: 2.5, moderate: 3.0, vigorous: 4.5 }
+  },
+  {
+    name: "HIIT",
+    category: "Cardio",
+    intensities: { light: 5.0, moderate: 8.0, vigorous: 11.0 }
+  },
+  {
+    name: "Jump Rope",
+    category: "Cardio",
+    intensities: { light: 8.0, moderate: 11.0, vigorous: 12.5 }
+  }
 ];
 
 // =========================
