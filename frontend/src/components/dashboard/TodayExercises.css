@@ -3,6 +3,8 @@
   border-radius: 18px;
   padding: 30px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .add-exercise-link-btn:hover {

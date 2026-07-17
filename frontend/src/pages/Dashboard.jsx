@@ -137,7 +137,7 @@ function Dashboard() {
 
       </div>
 
-      <div className="dashboard-logs" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "25px", marginTop: "35px" }}>
+      <div className="dashboard-logs">
         <TodayMeals meals={meals} />
         <TodayExercises exercises={exercises} onDelete={handleDeleteExercise} />
       </div>

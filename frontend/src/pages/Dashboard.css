@@ -37,3 +37,17 @@
   }
 
 }
+
+.dashboard-logs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  margin-top: 35px;
+  align-items: stretch;
+}
+
+@media (max-width: 900px) {
+  .dashboard-logs {
+    grid-template-columns: 1fr;
+  }
+}

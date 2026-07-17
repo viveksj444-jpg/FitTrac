@@ -1,5 +1,5 @@
 .today-meals {
-  margin-top: 40px;
+  margin-top: 0;
 
   background: white;
 
@@ -8,6 +8,8 @@
   padding: 30px;
 
   box-shadow: 0 8px 20px rgba(0,0,0,.08);
+  height: 100%;
+  box-sizing: border-box;
 }
 
 .today-meals-header{
