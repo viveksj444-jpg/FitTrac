@@ -5,15 +5,19 @@ import SummaryCard from "../components/dashboard/SummaryCard";
 import MacroCard from "../components/dashboard/MacroCard";
 import CalorieProgress from "../components/dashboard/CalorieProgress";
 import TodayMeals from "../components/dashboard/TodayMeals";
+import TodayExercises from "../components/dashboard/TodayExercises";
 
 import useDashboard from "../hooks/useDashboard";
 import useMeals from "../hooks/useMeals";
+import useExercises from "../hooks/useExercises";
+import { deleteExercise } from "../services/exerciseService";
 
 function Dashboard() {
   const {
     dashboard,
     loading: dashboardLoading,
     error: dashboardError,
+    refetch: refetchDashboard,
   } = useDashboard();
 
   const {
@@ -22,7 +26,24 @@ function Dashboard() {
     error: mealsError,
   } = useMeals();
 
-  if (dashboardLoading || mealsLoading) {
+  const {
+    exercises,
+    loading: exercisesLoading,
+    error: exercisesError,
+    refetch: refetchExercises,
+  } = useExercises();
+
+  const handleDeleteExercise = async (id) => {
+    try {
+      await deleteExercise(id);
+      refetchDashboard();
+      refetchExercises();
+    } catch (err) {
+      console.error("Failed to delete exercise:", err);
+    }
+  };
+
+  if (dashboardLoading || mealsLoading || exercisesLoading) {
     return <h2>Loading Dashboard...</h2>;
   }
 
@@ -32,6 +53,10 @@ function Dashboard() {
 
   if (mealsError) {
     return <h2>{mealsError}</h2>;
+  }
+
+  if (exercisesError) {
+    return <h2>{exercisesError}</h2>;
   }
 
   return (
@@ -50,6 +75,18 @@ function Dashboard() {
         <SummaryCard
           title="Consumed"
           value={dashboard.calories.consumed}
+          unit="kcal"
+        />
+
+        <SummaryCard
+          title="Burned"
+          value={dashboard.calories.burned}
+          unit="kcal"
+        />
+
+        <SummaryCard
+          title="Net Calories"
+          value={dashboard.calories.net}
           unit="kcal"
         />
 
@@ -100,7 +137,10 @@ function Dashboard() {
 
       </div>
 
-      <TodayMeals meals={meals} />
+      <div className="dashboard-logs" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "25px", marginTop: "35px" }}>
+        <TodayMeals meals={meals} />
+        <TodayExercises exercises={exercises} onDelete={handleDeleteExercise} />
+      </div>
 
     </div>
   );

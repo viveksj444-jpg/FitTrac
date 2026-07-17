@@ -11,6 +11,7 @@ const foodRoutes = require("./routes/foodRoutes");
 const nutritionRoutes = require("./routes/nutritionRoutes");
 const mealRoutes = require("./routes/mealRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
+const exerciseRoutes = require("./routes/exerciseRoutes");
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use("/api/foods", foodRoutes);
 app.use("/api/nutrition", nutritionRoutes);
 app.use("/api/meals", mealRoutes);
 app.use("/api/dashboard", dashboardRoutes);
+app.use("/api/exercises", exerciseRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;

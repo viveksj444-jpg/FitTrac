@@ -9,6 +9,7 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import AddMeal from "./pages/AddMeal";
+import AddExercise from "./pages/AddExercise";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -50,6 +51,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AddMeal />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/add-exercise"
+          element={
+            <ProtectedRoute>
+              <AddExercise />
             </ProtectedRoute>
           }
         />

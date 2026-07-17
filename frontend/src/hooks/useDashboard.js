@@ -6,18 +6,18 @@ const useDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    const fetchDashboard = async () => {
-      try {
-        const data = await getDashboard();
-        setDashboard(data.dashboard);
-      } catch (err) {
-        setError(err.response?.data?.message || "Something went wrong");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchDashboard = async () => {
+    try {
+      const data = await getDashboard();
+      setDashboard(data.dashboard);
+    } catch (err) {
+      setError(err.response?.data?.message || "Something went wrong");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchDashboard();
   }, []);
 
@@ -25,6 +25,7 @@ const useDashboard = () => {
     dashboard,
     loading,
     error,
+    refetch: fetchDashboard,
   };
 };
 

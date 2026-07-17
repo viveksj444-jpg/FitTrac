@@ -1,5 +1,6 @@
 const User = require("../models/User");
 const Meal = require("../models/Meal");
+const Exercise = require("../models/Exercise");
 
 const getDashboard = async (req, res) => {
   try {
@@ -34,6 +35,22 @@ const getDashboard = async (req, res) => {
         $lte: end,
       },
     }).populate("food");
+
+    // =============================
+    // Get Today's Exercises
+    // =============================
+    const exercises = await Exercise.find({
+      user: req.user._id,
+      createdAt: {
+        $gte: start,
+        $lte: end,
+      },
+    });
+
+    const totalBurned = exercises.reduce(
+      (sum, ex) => sum + (ex.caloriesBurned || 0),
+      0
+    );
 
     // =============================
     // Nutrition Summary
@@ -136,7 +153,10 @@ const getDashboard = async (req, res) => {
     );
 
     const calorieProgress = Math.min(
-      Math.round((summary.calories / goalCalories) * 100),
+      Math.max(
+        0,
+        Math.round(((summary.calories - totalBurned) / goalCalories) * 100)
+      ),
       100
     );
 
@@ -162,8 +182,10 @@ const getDashboard = async (req, res) => {
           goal: goalCalories,
           maintenance: maintenanceCalories,
           consumed: summary.calories,
+          burned: totalBurned,
+          net: summary.calories - totalBurned,
           remaining: Math.max(
-            goalCalories - summary.calories,
+            goalCalories - summary.calories + totalBurned,
             0
           ),
           progress: calorieProgress,
@@ -190,8 +212,10 @@ const getDashboard = async (req, res) => {
         },
 
         mealsCount: meals.length,
+        exercisesCount: exercises.length,
 
         todayMeals: groupedMeals,
+        todayExercises: exercises,
       },
     });
   } catch (error) {

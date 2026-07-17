@@ -1,0 +1,31 @@
+.today-exercises {
+  background: white;
+  border-radius: 18px;
+  padding: 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+}
+
+.add-exercise-link-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(244, 67, 54, 0.3) !important;
+  filter: brightness(1.05);
+}
+
+.add-exercise-inline-btn:hover {
+  background: var(--border-hover) !important;
+  transform: translateY(-1px);
+}
+
+.exercise-item:hover {
+  background: #fdf2f2 !important;
+}
+
+.delete-exercise-btn:hover {
+  color: #F44336 !important;
+}
+
+@media (max-width: 900px) {
+  .today-exercises {
+    padding: 20px;
+  }
+}
