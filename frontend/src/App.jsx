@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import AddMeal from "./pages/AddMeal";
 import AddExercise from "./pages/AddExercise";
+import WaterTracker from "./pages/WaterTracker";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -60,6 +61,15 @@ function App() {
           element={
             <ProtectedRoute>
               <AddExercise />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/water-tracker"
+          element={
+            <ProtectedRoute>
+              <WaterTracker />
             </ProtectedRoute>
           }
         />

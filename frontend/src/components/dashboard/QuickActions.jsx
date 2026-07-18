@@ -17,10 +17,8 @@ const actions = [
   },
   {
     title: "Water",
-    subtitle: "Coming Soon",
     icon: <FaTint />,
-    onClick: () =>
-      alert("💧 Water Tracker is coming soon!"),
+    to: "/water-tracker",
   },
   {
     title: "Exercise",

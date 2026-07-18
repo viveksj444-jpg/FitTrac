@@ -1,0 +1,180 @@
+.water-card {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 30px;
+  box-shadow: var(--shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.water-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+}
+
+.water-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.water-card-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.water-subtitle {
+  margin: 4px 0 0 0;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.detail-link-btn {
+  background-color: var(--secondary);
+  color: white;
+  padding: 8px 16px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.2);
+  transition: all var(--transition);
+  display: inline-block;
+  text-align: center;
+  border: none;
+}
+
+.detail-link-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.3);
+  filter: brightness(1.05);
+}
+
+.water-status-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.water-status-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.water-consumed-ratio {
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.water-consumed-ratio strong {
+  font-size: 24px;
+  color: var(--text);
+}
+
+.water-percentage {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary);
+}
+
+.water-progress-bar-bg {
+  width: 100%;
+  height: 12px;
+  background: var(--border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.water-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  border-radius: 10px;
+  transition: width 0.5s ease-in-out;
+}
+
+.water-remaining-info {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.water-remaining-info strong {
+  color: var(--text);
+}
+
+.water-quick-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-top: 1px dashed var(--border);
+  padding-top: 20px;
+}
+
+.quick-add-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.quick-add-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.quick-add-btn {
+  background: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 10px 5px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 13px;
+  transition: all var(--transition);
+  cursor: pointer;
+  text-align: center;
+}
+
+.quick-add-btn:hover:not(:disabled) {
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.15);
+  transform: translateY(-1px);
+}
+
+.quick-add-btn:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.quick-add-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Loading & Error States */
+.loading-card, .error-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 250px;
+  color: var(--text-light);
+}
+
+.loading-card h3, .error-card h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+}

@@ -6,6 +6,7 @@ import MacroCard from "../components/dashboard/MacroCard";
 import CalorieProgress from "../components/dashboard/CalorieProgress";
 import TodayMeals from "../components/dashboard/TodayMeals";
 import TodayExercises from "../components/dashboard/TodayExercises";
+import WaterCard from "../components/water/WaterCard";
 
 import useDashboard from "../hooks/useDashboard";
 import useMeals from "../hooks/useMeals";
@@ -140,6 +141,7 @@ function Dashboard() {
       <div className="dashboard-logs">
         <TodayMeals meals={meals} />
         <TodayExercises exercises={exercises} onDelete={handleDeleteExercise} />
+        <WaterCard />
       </div>
 
     </div>

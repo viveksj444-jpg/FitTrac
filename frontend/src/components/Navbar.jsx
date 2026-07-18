@@ -38,6 +38,10 @@ const Navbar = () => {
           Add Meal
         </Link>
 
+        <Link to="/water-tracker">
+          Water Tracker
+        </Link>
+
         <Link to="/profile">
           Profile
         </Link>

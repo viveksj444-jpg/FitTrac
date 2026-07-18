@@ -1,0 +1,78 @@
+.water-progress-card {
+  background: var(--card);
+  padding: 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid var(--border);
+  transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.water-progress-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.water-progress-title {
+  margin-bottom: 25px;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.water-progress-circle-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+}
+
+.water-progress-ring {
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.8s ease;
+}
+
+.water-progress-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.water-progress-text h1 {
+  margin: 0;
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.water-progress-text p {
+  margin-top: 4px;
+  color: var(--text-light);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.water-progress-details {
+  margin-top: 25px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.water-progress-details .detail-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  color: var(--text-light);
+}
+
+.water-progress-details .detail-item strong {
+  color: var(--text);
+}

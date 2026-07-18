@@ -1,0 +1,181 @@
+.water-tracker-page-wrapper {
+  min-height: 100vh;
+  background: var(--background);
+}
+
+.water-tracker-container {
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.water-tracker-header {
+  margin-bottom: 35px;
+}
+
+.water-tracker-header h1 {
+  font-size: 32px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.water-tracker-header p {
+  color: var(--text-light);
+  font-size: 16px;
+}
+
+.water-tracker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  align-items: start;
+}
+
+.water-tracker-left {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.water-actions-panel, .water-goal-panel {
+  background: var(--card);
+  padding: 25px 30px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+.water-actions-panel h3, .water-goal-panel h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+.tracker-quick-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.quick-add-btn-large {
+  background: var(--background);
+  color: var(--text);
+  border: 1px solid var(--border);
+  padding: 15px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 15px;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.quick-add-btn-large:hover:not(:disabled) {
+  background: var(--secondary);
+  color: white;
+  border-color: var(--secondary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+}
+
+.quick-add-btn-large:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.input-group {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  width: 100%;
+}
+
+.custom-amount-input, .goal-input {
+  flex-grow: 1;
+  padding: 12px 16px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--background);
+  outline: none;
+  transition: border-color var(--transition);
+}
+
+.custom-amount-input:focus, .goal-input:focus {
+  border-color: var(--secondary);
+}
+
+.custom-add-btn, .goal-submit-btn {
+  background: var(--secondary);
+  color: white;
+  padding: 12px 24px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition);
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.15);
+  white-space: nowrap;
+}
+
+.custom-add-btn:hover, .goal-submit-btn:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 15px rgba(59, 130, 246, 0.25);
+}
+
+.unit-label {
+  font-weight: 500;
+  color: var(--text-light);
+  font-size: 15px;
+}
+
+.error-text {
+  color: #f44336;
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.success-text {
+  color: var(--primary);
+  font-size: 13px;
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.loading-state, .error-state {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  text-align: center;
+  color: var(--text-light);
+}
+
+.retry-btn {
+  margin-top: 15px;
+  background: var(--secondary);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 900px) {
+  .water-tracker-container {
+    padding: 20px;
+  }
+  
+  .water-tracker-grid {
+    grid-template-columns: 1fr;
+  }
+}
