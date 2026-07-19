@@ -454,12 +454,76 @@ Users can:
 ```
 Implement complete exercise tracking module
 ```
-## 💧 Water Tracker
+# Day 15 — Water Tracker
 
-- Add Daily Water Intake
-- View Today's Water Consumption
-- Track Water Intake Progress
-- Daily Hydration Goal
-- Quick Add Water (250ml, 500ml, 750ml, 1L)
-- Delete Water Entries
-- Dashboard Water Summary
+## Goal
+
+Implement a complete water intake tracking system to help users monitor their daily hydration.
+
+## Completed Tasks
+
+- Created Water schema
+- Created Water model
+- Implemented Water controller
+- Created Water routes
+- Added protected Water APIs
+- Added Add Water functionality
+- Added Get Water Entries functionality
+- Implemented Daily Water Summary
+- Connected Water module with User
+- Integrated Water Tracker with Dashboard
+- Tested all Water APIs using Postman
+
+## APIs
+
+### Add Water Entry
+
+POST /api/water
+
+### Get All Water Entries
+
+GET /api/water
+
+### Get Today's Water Summary
+
+GET /api/water/today
+
+## Files Created
+
+Backend
+
+- models/Water.js
+- controllers/waterController.js
+- routes/waterRoutes.js
+
+Frontend
+
+- pages/AddWater.jsx
+- pages/AddWater.css
+- hooks/useWater.js
+- services/waterService.js
+- components/dashboard/TodayWater.jsx
+- components/dashboard/TodayWater.css
+
+## Result
+
+Users can:
+
+- Add daily water intake
+- View today's water entries
+- Track total water consumed
+- Monitor hydration progress
+- Display water intake on the dashboard
+
+## Challenges
+
+- Implemented JWT-protected water routes
+- Connected water data with authenticated users
+- Calculated daily water totals
+- Verified API responses using Postman
+
+## Git Commit
+
+```
+Implement complete water tracking module
+```
