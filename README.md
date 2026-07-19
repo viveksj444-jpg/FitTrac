@@ -290,7 +290,7 @@ Screenshots will be added as the project progresses.
 
 ## Phase 4
 
-- 🚧 Exercise Tracking
+- ✅ Exercise Tracking
 
 ## Phase 5
 
