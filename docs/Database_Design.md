@@ -203,6 +203,25 @@ Example Document
 
 ---
 
+# Water Collection
+
+Collection Name
+
+```
+waters
+```
+
+Fields
+
+| Field | Type | Description |
+|--------|------|-------------|
+| user | ObjectId | Reference to User |
+| amount | Number | Water consumed (ml) |
+| createdAt | Date | Entry creation time |
+| updatedAt | Date | Last update time |
+
+---
+
 # Collection Relationships
 
 ```text
