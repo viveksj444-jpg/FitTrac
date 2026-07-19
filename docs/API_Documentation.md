@@ -342,6 +342,52 @@ Required
 
 ---
 
+# 💧Water Tracker API
+
+## APIs Implemented
+
+### Add Water Entry
+
+POST /api/water
+
+Description:
+
+Adds a new water intake entry for the authenticated user.
+
+Authentication:
+
+Required
+
+Example Request
+
+```json
+{
+  "amount": 500
+}
+```
+
+### Get Today's Water Summary
+
+GET /api/water/today
+
+Description:
+
+Returns today's total water intake along with the number of entries logged.
+
+Authentication:
+
+Required
+
+Example Response
+
+```json
+{
+  "success": true,
+  "entries": 4,
+  "totalWater": 2000
+}
+```
+
 # 📊 Dashboard APIs
 
 Dashboard-related endpoints.
