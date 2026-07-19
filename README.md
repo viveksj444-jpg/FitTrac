@@ -46,7 +46,7 @@ The project is being developed step by step to demonstrate full-stack developmen
 - Track Calories Burned
 - Exercise History
 
-*(Currently under development)*
+
 
 ---
 
