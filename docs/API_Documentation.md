@@ -390,13 +390,13 @@ Example Response
 
 # 📊 Dashboard APIs
 
-Dashboard-related endpoints.
+The Dashboard module aggregates meal, exercise, and user data to provide a daily nutrition overview.
 
-(Currently under development)
+All dashboard routes require JWT authentication.
 
 ---
 
-## Get Dashboard Summary
+## Get Net Calories Dashboard
 
 ### Endpoint
 
@@ -406,11 +406,80 @@ GET /dashboard
 
 Required
 
-### Status
+### Header
 
-🚧 In Development
+```text
+Authorization: Bearer YOUR_JWT_TOKEN
+```
 
 ---
+
+### Description
+
+Returns the user's daily calorie dashboard including:
+
+- Daily Goal
+- Calories Consumed
+- Calories Burned
+- Net Calories
+- Remaining Calories
+- Macronutrient Summary
+- Today's Meals
+- Today's Exercises
+- Today's Water Intake
+
+---
+
+### Success Response
+
+```json
+{
+  "success": true,
+  "dashboard": {
+    "dailyGoal": 2500,
+    "consumed": 1850,
+    "burned": 420,
+    "netCalories": 1430,
+    "remaining": 1070,
+
+    "protein": 98,
+    "carbs": 210,
+    "fat": 52,
+
+    "water": 2500,
+
+    "mealsToday": 5,
+    "exercisesToday": 2
+  }
+}
+```
+
+---
+
+## Dashboard Calculations
+
+### Net Calories
+
+```
+Net Calories = Calories Consumed − Calories Burned
+```
+
+### Remaining Calories
+
+```
+Remaining = Daily Goal − Net Calories
+```
+
+---
+
+## HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+|200|Dashboard Loaded|
+|401|Unauthorized|
+|500|Server Error|
+
 
 # 🔒 Protected Routes
 
