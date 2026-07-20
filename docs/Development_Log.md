@@ -527,3 +527,155 @@ Users can:
 ```
 Implement complete water tracking module
 ```
+# Day 16 — Net Calories Dashboard
+
+## Goal
+
+Develop a centralized Dashboard that combines meal tracking, exercise tracking, and water tracking into a single daily health summary.
+
+---
+
+## Objectives
+
+- Build Dashboard Controller
+- Calculate Calories Consumed
+- Calculate Calories Burned
+- Calculate Net Calories
+- Calculate Remaining Calories
+- Display Daily Nutrition Summary
+- Integrate Water Tracker
+- Create Dashboard API
+
+---
+
+## Completed Tasks
+
+### Backend
+
+- Created Dashboard Controller
+- Created Dashboard Routes
+- Calculated Total Calories Consumed
+- Calculated Total Calories Burned
+- Calculated Net Calories
+- Calculated Remaining Calories
+- Calculated Today's Protein
+- Calculated Today's Carbohydrates
+- Calculated Today's Fat
+- Calculated Today's Water Intake
+
+### Frontend
+
+- Dashboard Cards
+- Nutrition Summary
+- Today's Meals
+- Today's Exercises
+- Water Summary
+- Net Calories Card
+- Remaining Calories Card
+- Daily Goal Card
+
+---
+
+## Formula Used
+
+### Calories Consumed
+
+```
+Sum of all meal calories
+```
+
+### Calories Burned
+
+```
+Sum of all exercise calories
+```
+
+### Net Calories
+
+```
+Net Calories = Consumed − Burned
+```
+
+### Remaining Calories
+
+```
+Remaining = Daily Goal − Net Calories
+```
+
+---
+
+## API
+
+### Get Dashboard
+
+```
+GET /api/dashboard
+```
+
+---
+
+## Files Created
+
+Backend
+
+```
+controllers/dashboardController.js
+routes/dashboardRoutes.js
+```
+
+Frontend
+
+```
+pages/Dashboard.jsx
+pages/Dashboard.css
+
+hooks/useDashboard.js
+
+services/dashboardService.js
+
+components/dashboard/
+```
+
+---
+
+## Result
+
+Users can now:
+
+- View daily calorie goal
+- View calories consumed
+- View calories burned
+- View net calories
+- View remaining calories
+- View water intake
+- View macronutrients
+- Monitor today's activity from a single dashboard
+
+---
+
+## Testing
+
+Verified:
+
+- Dashboard API
+- JWT Authentication
+- Meal calculations
+- Exercise calculations
+- Water calculations
+- Net calorie calculations
+
+---
+
+## Git Commit
+
+```
+Implement Net Calories Dashboard
+```
+
+---
+
+## Next Steps
+
+- Smart Nutrition Recommendation
+- Weekly Analytics
+- Monthly Analytics
