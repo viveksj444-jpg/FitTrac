@@ -251,6 +251,71 @@ JSON Response
 
 ---
 
+---
+
+# Dashboard Architecture
+
+The Dashboard acts as the application's analytics layer.
+
+Instead of storing dashboard data, it calculates values dynamically using data from multiple collections.
+
+```text
+                User
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+      Meals            Exercises
+        │                   │
+        ▼                   ▼
+Calories Consumed     Calories Burned
+        │                   │
+        └─────────┬─────────┘
+                  │
+                  ▼
+          Dashboard Controller
+                  │
+                  ▼
+         Net Calories Calculation
+                  │
+                  ▼
+           Dashboard Response
+```
+
+---
+
+## Dashboard Responsibilities
+
+The Dashboard Controller is responsible for:
+
+- Fetching today's meals
+- Fetching today's exercises
+- Fetching today's water intake
+- Calculating calories consumed
+- Calculating calories burned
+- Calculating net calories
+- Calculating remaining calories
+- Returning nutrition statistics
+
+---
+
+## Dashboard Formula
+
+```text
+Calories Consumed
+        │
+        ▼
+Calories Burned
+        │
+        ▼
+Net Calories
+
+Net Calories = Consumed − Burned
+
+Remaining Calories = Goal − Net Calories
+```
+
+The dashboard does not store calculated values in MongoDB. All values are generated dynamically when requested.
+
 # Current Application Modules
 
 ## Authentication
