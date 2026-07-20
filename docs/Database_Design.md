@@ -221,6 +221,51 @@ Fields
 | updatedAt | Date | Last update time |
 
 ---
+---
+
+# Dashboard Collection
+
+The Dashboard does **not** have its own MongoDB collection.
+
+Instead, dashboard information is generated dynamically from existing collections.
+
+Data Sources
+
+| Collection | Purpose |
+|------------|---------|
+| Users | Daily calorie goal |
+| Meals | Calories consumed |
+| Exercises | Calories burned |
+| Waters | Daily water intake |
+
+---
+
+Dashboard Calculation
+
+```text
+Users
+   │
+Meals
+   │
+Exercises
+   │
+Waters
+   │
+   ▼
+Dashboard Controller
+   │
+   ▼
+Dashboard JSON Response
+```
+
+No dashboard data is permanently stored in the database.
+
+This approach ensures:
+
+- No duplicate data
+- Faster updates
+- Better scalability
+- Reduced storage requirements
 
 # Collection Relationships
 
