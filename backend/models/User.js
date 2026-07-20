@@ -44,6 +44,10 @@ const userSchema = new mongoose.Schema(
       enum: ["lose", "maintain", "gain"],
       required: true,
     },
+
+    dailyCalorieGoal: {
+      type: Number,
+    },
   },
   {
     timestamps: true,

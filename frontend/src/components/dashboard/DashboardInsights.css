@@ -1,0 +1,94 @@
+.dashboard-insights {
+  background: var(--surface, #1e293b);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.3);
+  margin-top: 25px;
+}
+
+.insights-header h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary, #f8fafc);
+  margin: 0 0 16px 0;
+}
+
+.insights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.insight-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.insight-card:hover {
+  transform: translateY(-2px);
+}
+
+.insight-icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.insight-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.insight-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.insight-message {
+  font-size: 0.9rem;
+  color: var(--text-primary, #f8fafc);
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+/* Insight Card Variants */
+.insight-card.insight-success {
+  background: rgba(16, 185, 129, 0.08);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.insight-card.insight-success .insight-title {
+  color: #34d399;
+}
+
+.insight-card.insight-warning {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+.insight-card.insight-warning .insight-title {
+  color: #f87171;
+}
+
+.insight-card.insight-info {
+  background: rgba(56, 189, 248, 0.08);
+  border-color: rgba(56, 189, 248, 0.2);
+}
+.insight-card.insight-info .insight-title {
+  color: #38bdf8;
+}
+
+.insight-card.insight-tip {
+  background: rgba(245, 158, 11, 0.08);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+.insight-card.insight-tip .insight-title {
+  color: #fbbf24;
+}

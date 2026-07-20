@@ -2,6 +2,36 @@ const User = require("../models/User");
 const Meal = require("../models/Meal");
 const Exercise = require("../models/Exercise");
 
+// Helper: Calculate daily calorie goal for a user
+const calculateGoal = (user) => {
+  if (user.dailyCalorieGoal) {
+    return user.dailyCalorieGoal;
+  }
+
+  let bmr;
+  if (user.gender === "female") {
+    bmr = 10 * user.weight + 6.25 * user.height - 5 * user.age - 161;
+  } else {
+    bmr = 10 * user.weight + 6.25 * user.height - 5 * user.age + 5;
+  }
+
+  const maintenanceCalories = Math.round(bmr * 1.55);
+  let goal = maintenanceCalories;
+
+  switch (user.goal) {
+    case "lose":
+      goal -= 500;
+      break;
+    case "gain":
+      goal += 300;
+      break;
+    default:
+      break;
+  }
+
+  return goal;
+};
+
 const getDashboard = async (req, res) => {
   try {
     // =============================
@@ -87,7 +117,7 @@ const getDashboard = async (req, res) => {
     });
 
     // =============================
-    // Calculate BMR
+    // Calculate BMR & Goal
     // =============================
     let bmr;
 
@@ -105,25 +135,8 @@ const getDashboard = async (req, res) => {
         161;
     }
 
-    // =============================
-    // Maintenance Calories
-    // =============================
     const maintenanceCalories = Math.round(bmr * 1.55);
-
-    let goalCalories = maintenanceCalories;
-
-    switch (user.goal) {
-      case "lose":
-        goalCalories -= 500;
-        break;
-
-      case "gain":
-        goalCalories += 300;
-        break;
-
-      default:
-        break;
-    }
+    const goalCalories = calculateGoal(user);
 
     // =============================
     // Macro Goals
@@ -228,6 +241,89 @@ const getDashboard = async (req, res) => {
   }
 };
 
+// =============================
+// Get Net Calories Controller
+// =============================
+const getNetCalories = async (req, res) => {
+  try {
+    const user = await User.findById(req.user._id);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+
+    const end = new Date();
+    end.setHours(23, 59, 59, 999);
+
+    const meals = await Meal.find({
+      user: req.user._id,
+      createdAt: {
+        $gte: start,
+        $lte: end,
+      },
+    });
+
+    const exercises = await Exercise.find({
+      user: req.user._id,
+      createdAt: {
+        $gte: start,
+        $lte: end,
+      },
+    });
+
+    const consumed = meals.reduce(
+      (sum, meal) => sum + (meal.calories || 0),
+      0
+    );
+
+    const burned = exercises.reduce(
+      (sum, ex) => sum + (ex.caloriesBurned || 0),
+      0
+    );
+
+    const goal = calculateGoal(user);
+    const netCalories = consumed - burned;
+    const remaining = goal - netCalories;
+
+    const rawProgress = goal > 0 ? (netCalories / goal) * 100 : 0;
+    const progress = Math.min(100, Math.max(0, Math.round(rawProgress)));
+
+    let status = "On Track";
+    if (netCalories > goal) {
+      status = "Calorie Surplus";
+    } else if (netCalories < goal - 200) {
+      status = "Calorie Deficit";
+    } else {
+      status = "On Track";
+    }
+
+    return res.status(200).json({
+      success: true,
+      goal,
+      consumed,
+      burned,
+      netCalories,
+      remaining,
+      status,
+      progress,
+    });
+  } catch (error) {
+    console.error("Error in getNetCalories:", error);
+
+    return res.status(500).json({
+      success: false,
+      message: error.message,
+    });
+  }
+};
+
 module.exports = {
   getDashboard,
+  getNetCalories,
 };
