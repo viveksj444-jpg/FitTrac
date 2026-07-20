@@ -1,130 +1,10 @@
-# 🏋️ FitTrac
+# Calorie Tracker
 
-FitTrac is a full-stack calorie tracking web application built using the **MERN Stack (MongoDB, Express.js, React, Node.js)**. It helps users monitor their daily nutrition, track meals, calculate calories consumed, log exercises, and work toward their fitness goals.
+Calorie Tracker is a modern, responsive, full-stack web application built using the MERN stack (MongoDB, Express, React, Node.js) with Vite.
 
-The project is being developed step by step to demonstrate full-stack development concepts, REST API design, authentication, database modeling, and frontend–backend integration.
+This repository is structured as a monorepo containing both the frontend and backend of the application in separate directories.
 
----
-
-# ✨ Features
-
-## 🔐 Authentication
-
-- User Registration
-- User Login
-- JWT Authentication
-- Password Encryption using bcrypt
-- Protected Routes
-
----
-
-## 🍎 Food Database
-
-- Food Search
-- Nutrition Information
-- Calories
-- Protein
-- Carbohydrates
-- Fat
-- Seeded Food Database
-
----
-
-## 🍽️ Meal Tracking
-
-- Add Meal
-- View Meals
-- Daily Nutrition Summary
-- Automatic Nutrition Calculation
-- Calories Tracking
-
----
-
-## 🏃 Exercise Tracking
-
-- Add Exercise
-- Track Calories Burned
-- Exercise History
-
-*(Currently under development)*
-
----
-
-## 📊 Dashboard
-
-- Daily Calories
-- Daily Protein
-- Carbs
-- Fat
-- Calories Burned
-- Remaining Calories
-
-*(Currently under development)*
-
----
-
-# 🚀 Project Status
-
-## ✅ Completed
-
-- Project Setup
-- Express Server
-- MongoDB Atlas Connection
-- User Authentication
-- JWT Authorization
-- User Model
-- Food Model
-- Meal Model
-- Food Database
-- Meal APIs
-- Daily Nutrition Summary API
-
-## 🚧 In Progress
-
-- Exercise Tracking
-- Dashboard Integration
-- Frontend Integration
-
-## 📌 Planned
-
-- Weekly Reports
-- Monthly Reports
-- Water Tracker
-- AI Meal Suggestions
-- PDF Reports
-- Deployment
-
----
-
-# 🛠 Tech Stack
-
-## Frontend
-
-- React
-- Vite
-- React Router
-- Axios
-- CSS
-
-## Backend
-
-- Node.js
-- Express.js
-- MongoDB Atlas
-- Mongoose
-- JWT Authentication
-- bcryptjs
-
-## Development Tools
-
-- Git
-- GitHub
-- VS Code
-- Postman
-
----
-
-# 📂 Project Structure
+## Project Structure
 
 ```text
 FitTrac
@@ -250,104 +130,17 @@ Authorization: Bearer YOUR_JWT_TOKEN
 
 ---
 
-# 📚 Documentation
+## GitHub Repository Setup Instructions
 
-Detailed documentation is available in the **docs** folder.
+If you want to push this project to a new repository on GitHub, run the following commands in the root directory:
 
-- API Documentation
-- Database Design
-- Development Log
-- Architecture
-- Testing Guide
+```bash
+# Rename the default branch to main
+git branch -M main
 
----
+# Add your GitHub remote repository (replace with your repository URL)
+git remote add origin https://github.com/YOUR_USERNAME/calorie-tracker.git
 
-# 🖼️ Screenshots
-
-Screenshots will be added as the project progresses.
-
-- Login Page
-- Register Page
-- Dashboard
-- Add Meal
-- Exercise Tracker
-
----
-
-# 🛣️ Development Roadmap
-
-## Phase 1
-
-- ✅ Authentication
-
-## Phase 2
-
-- ✅ Food Database
-
-## Phase 3
-
-- ✅ Meal Tracking
-
-## Phase 4
-
-- 🚧 Exercise Tracking
-
-## Phase 5
-
-- 🚧 Dashboard
-
-## Phase 6
-
-- Analytics & Reports
-
-## Phase 7
-
-- Deployment
-
----
-
-# 🎯 Learning Objectives
-
-This project demonstrates:
-
-- REST API Development
-- MongoDB Data Modeling
-- JWT Authentication
-- Password Hashing
-- CRUD Operations
-- React Hooks
-- Frontend–Backend Integration
-- State Management
-- Git & GitHub Workflow
-
----
-
-# 🚀 Future Enhancements
-
-- Water Intake Tracker
-- AI Food Recommendation
-- Barcode Scanner
-- Weekly Analytics
-- Monthly Analytics
-- Goal Progress
-- Weight Tracking
-- Dark Mode
-- Responsive Improvements
-- PDF Reports
-- Cloud Deployment
-
----
-
-# 👨‍💻 Author
-
-**Vivek**
-
-GitHub: https://github.com/viveksj444-jpg
-
-LinkedIn: *(Add your LinkedIn profile)*
-
----
-
-# 📄 License
-
-This project is licensed under the MIT License.
+# Push the initial commit to main branch
+git push -u origin main
+```
