@@ -42,6 +42,10 @@ const Navbar = () => {
           Water Tracker
         </Link>
 
+        <Link to="/recommendations">
+          Recommendations
+        </Link>
+
         <Link to="/profile">
           Profile
         </Link>

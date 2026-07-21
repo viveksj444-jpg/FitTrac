@@ -1,0 +1,88 @@
+.nutrition-summary-section {
+  background: var(--card, #ffffff);
+  border-radius: var(--radius, 18px);
+  padding: 24px;
+  box-shadow: var(--shadow, 0 10px 25px rgba(0, 0, 0, 0.08));
+  margin-bottom: 24px;
+}
+
+.nutrition-summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.nutrition-summary-header h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text, #1f2937);
+}
+
+.goal-badge {
+  background: #e0f2fe;
+  color: #0369a1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 12px;
+  letter-spacing: 0.5px;
+}
+
+.nutrition-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 16px;
+}
+
+.summary-card-item {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  border-top-width: 4px;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.summary-card-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.card-icon {
+  font-size: 1.25rem;
+}
+
+.card-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #6b7280;
+}
+
+.card-value-group {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.card-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text, #1f2937);
+}
+
+.card-unit {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  font-weight: 500;
+}

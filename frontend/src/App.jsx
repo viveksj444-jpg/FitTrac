@@ -11,6 +11,7 @@ import Profile from "./pages/Profile";
 import AddMeal from "./pages/AddMeal";
 import AddExercise from "./pages/AddExercise";
 import WaterTracker from "./pages/WaterTracker";
+import Recommendations from "./pages/Recommendations";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -70,6 +71,15 @@ function App() {
           element={
             <ProtectedRoute>
               <WaterTracker />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/recommendations"
+          element={
+            <ProtectedRoute>
+              <Recommendations />
             </ProtectedRoute>
           }
         />

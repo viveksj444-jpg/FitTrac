@@ -13,6 +13,7 @@ const mealRoutes = require("./routes/mealRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const exerciseRoutes = require("./routes/exerciseRoutes");
 const waterRoutes = require("./routes/waterRoutes");
+const recommendationRoutes = require("./routes/recommendationRoutes");
 
 const app = express();
 
@@ -37,6 +38,7 @@ app.use("/api/meals", mealRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/exercises", exerciseRoutes);
 app.use("/api/water", waterRoutes);
+app.use("/api/recommendations", recommendationRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;

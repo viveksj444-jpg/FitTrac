@@ -1,33 +1,40 @@
 import "./QuickActions.css";
+import {
+  FaUtensils,
+  FaTint,
+  FaRunning,
+  FaChartBar,
+  FaLightbulb,
+} from "react-icons/fa";
 import ActionButton from "./ActionButton";
-
-const UtensilsIcon = () => <span>🍽️</span>;
-const WaterIcon = () => <span>💧</span>;
-const RunningIcon = () => <span>🏃</span>;
-const ChartIcon = () => <span>📊</span>;
 
 const actions = [
   {
     title: "Add Meal",
-    icon: <UtensilsIcon />,
+    icon: <FaUtensils />,
     to: "/add-meal",
   },
   {
     title: "Water",
-    icon: <WaterIcon />,
+    icon: <FaTint />,
     to: "/water-tracker",
+  },
+  {
+    title: "View Recommendations",
+    icon: <FaLightbulb />,
+    to: "/recommendations",
   },
   {
     title: "Exercise",
     subtitle: "Coming Soon",
-    icon: <RunningIcon />,
+    icon: <FaRunning />,
     onClick: () =>
       alert("🏃 Exercise Tracker is coming soon!"),
   },
   {
     title: "Reports",
     subtitle: "Coming Soon",
-    icon: <ChartIcon />,
+    icon: <FaChartBar />,
     onClick: () =>
       alert("📊 Reports are coming soon!"),
   },
