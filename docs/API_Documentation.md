@@ -472,6 +472,160 @@ Remaining = Daily Goal − Net Calories
 
 ---
 
+# 🥗 Smart Nutrition Recommendation APIs
+
+The Smart Recommendation module analyzes the user's daily nutrition and provides personalized food and hydration suggestions.
+
+All recommendation routes require JWT authentication.
+
+---
+
+## Get Smart Recommendations
+
+### Endpoint
+
+GET /api/recommendations
+
+### Authentication
+
+Required
+
+### Header
+
+```text
+Authorization: Bearer YOUR_JWT_TOKEN
+```
+
+---
+
+### Description
+
+Analyzes today's nutrition and returns intelligent recommendations based on:
+
+- Calories consumed
+- Protein intake
+- Carbohydrates
+- Fat intake
+- Water intake
+- User fitness goal
+
+---
+
+### Recommendation Rules
+
+#### Protein
+
+If protein intake is below the daily target:
+
+Suggested Foods:
+
+- Chicken Breast
+- Eggs
+- Paneer
+- Greek Yogurt
+- Fish
+- Tofu
+- Soya Chunks
+- Whey Protein
+
+---
+
+#### Calories
+
+If calories are below target:
+
+Suggestions
+
+- Eat another balanced meal
+- Increase complex carbohydrates
+- Increase lean protein intake
+
+If calories exceed target:
+
+Suggestions
+
+- Reduce calorie intake
+- Avoid sugary beverages
+- Increase physical activity
+
+---
+
+#### Carbohydrates
+
+Low carbohydrate intake:
+
+Suggestions
+
+- Brown Rice
+- Oats
+- Sweet Potato
+- Whole Wheat Bread
+
+---
+
+#### Fat
+
+High fat intake:
+
+Suggestions
+
+- Reduce fried foods
+- Use healthy oils
+- Prefer grilled food
+
+---
+
+#### Water
+
+Low hydration:
+
+Suggestions
+
+- Drink more water
+- Consume water-rich fruits
+- Maintain hydration throughout the day
+
+---
+
+### Success Response
+
+```json
+{
+  "success": true,
+  "summary": {
+    "goal": "maintain",
+    "calories": 1850,
+    "protein": 82,
+    "carbs": 210,
+    "fat": 48,
+    "water": 2200
+  },
+  "recommendations": [
+    {
+      "type": "protein",
+      "title": "Increase Protein Intake",
+      "description": "Consume approximately 20g more protein today.",
+      "foods": [
+        "Chicken Breast",
+        "Eggs",
+        "Paneer",
+        "Greek Yogurt"
+      ]
+    }
+  ]
+}
+```
+
+---
+
+## Status Codes
+
+| Code | Description |
+|------|-------------|
+|200|Recommendations Generated|
+|401|Unauthorized|
+|500|Server Error|
+
 ## HTTP Status Codes
 
 | Code | Description |
