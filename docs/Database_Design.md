@@ -267,6 +267,53 @@ This approach ensures:
 - Better scalability
 - Reduced storage requirements
 
+---
+
+# Recommendation Module
+
+The Recommendation system does **not** use a dedicated MongoDB collection.
+
+Recommendations are generated dynamically using existing collections.
+
+## Data Sources
+
+| Collection | Purpose |
+|------------|---------|
+| Users | User profile and fitness goal |
+| Meals | Calories and macronutrients |
+| Exercises | Calories burned |
+| Waters | Daily hydration |
+
+---
+
+## Recommendation Process
+
+```text
+Users
+   │
+Meals
+   │
+Exercises
+   │
+Waters
+   │
+   ▼
+Recommendation Engine
+   │
+   ▼
+Personalized Suggestions
+```
+
+---
+
+## Benefits
+
+- No duplicate storage
+- Always uses live data
+- Faster updates
+- Easier maintenance
+- Scalable architecture
+
 # Collection Relationships
 
 ```text
