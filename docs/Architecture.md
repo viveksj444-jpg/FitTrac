@@ -316,6 +316,90 @@ Remaining Calories = Goal − Net Calories
 
 The dashboard does not store calculated values in MongoDB. All values are generated dynamically when requested.
 
+---
+
+# Smart Recommendation Architecture
+
+The Recommendation Engine is the intelligence layer of FitTrac.
+
+Instead of storing recommendation data, the system analyzes the user's current nutrition each time the API is requested.
+
+```text
+             User
+               │
+               ▼
+        Today's Meals
+               │
+               ▼
+       Nutrition Summary
+               │
+               ▼
+        Recommendation Engine
+               │
+     ┌─────────┼─────────┐
+     │         │         │
+     ▼         ▼         ▼
+Protein   Calories   Hydration
+Analysis  Analysis   Analysis
+     │         │         │
+     └─────────┼─────────┘
+               ▼
+     Smart Recommendations
+               │
+               ▼
+          JSON Response
+```
+
+---
+
+## Responsibilities
+
+The Recommendation Controller:
+
+- Reads today's meals
+- Reads today's water intake
+- Reads user fitness goal
+- Calculates nutrition totals
+- Compares intake against targets
+- Generates personalized recommendations
+- Returns recommendation cards
+
+---
+
+## Recommendation Flow
+
+```text
+Meals
+    │
+Exercises
+    │
+Water
+    │
+User Goal
+    │
+    ▼
+Recommendation Engine
+    │
+    ▼
+Analyze Nutrition
+    │
+    ▼
+Generate Suggestions
+    │
+    ▼
+Return API Response
+```
+
+---
+
+## Design Principles
+
+- Dynamic recommendation generation
+- Rule-based analysis
+- Goal-oriented suggestions
+- Reusable recommendation engine
+- Modular architecture
+
 # Current Application Modules
 
 ## Authentication
