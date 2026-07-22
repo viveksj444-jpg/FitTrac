@@ -820,9 +820,180 @@ Implement Smart Nutrition Recommendation module
 
 ---
 
+# Day 18 — Weekly Analytics
+
+## Goal
+
+Develop a Weekly Analytics module that provides users with historical insights into their nutrition, exercise, hydration, and fitness progress over the last seven days.
+
+---
+
+## Objectives
+
+- Build Weekly Analytics API
+- Calculate daily nutrition statistics
+- Calculate weekly averages
+- Calculate net calories
+- Measure goal completion
+- Generate trend analysis
+- Display charts and insights on the frontend
+
+---
+
+## Completed Tasks
+
+### Backend
+
+- Created Analytics Controller
+- Created Analytics Routes
+- Implemented Weekly Analytics API
+- Aggregated Meal Data
+- Aggregated Exercise Data
+- Aggregated Water Data
+- Calculated Daily Nutrition Totals
+- Calculated Weekly Averages
+- Calculated Goal Completion Percentage
+- Generated Weekly Trends
+
+### Frontend
+
+- Created Weekly Analytics Page
+- Created Analytics Service
+- Created useWeeklyAnalytics Hook
+- Added Weekly Summary Cards
+- Added Daily Statistics Table
+- Added Weekly Charts
+- Added Weekly Insights Section
+
+---
+
+## Analytics Calculated
+
+- Average Calories Consumed
+- Average Calories Burned
+- Average Net Calories
+- Average Water Intake
+- Average Protein
+- Average Carbohydrates
+- Average Fat
+- Highest Calorie Day
+- Lowest Calorie Day
+- Most Active Day
+- Least Active Day
+- Weekly Goal Completion
+
+---
+
+## API
+
+### Weekly Analytics
+
+```
+GET /api/analytics/weekly
+```
+
+---
+
+## Files Created
+
+### Backend
+
+```
+controllers/analyticsController.js
+routes/analyticsRoutes.js
+```
+
+### Frontend
+
+```
+pages/WeeklyAnalytics.jsx
+pages/WeeklyAnalytics.css
+
+services/analyticsService.js
+
+hooks/useWeeklyAnalytics.js
+
+components/analytics/
+
+WeeklySummaryCard.jsx
+WeeklyCaloriesChart.jsx
+WeeklyMacrosChart.jsx
+WeeklyWaterChart.jsx
+GoalCompletionCard.jsx
+WeeklyInsights.jsx
+```
+
+---
+
+## Features Added
+
+- Seven-day analytics
+- Daily nutrition tracking
+- Weekly averages
+- Goal completion tracking
+- Net calorie trend
+- Water intake trend
+- Macronutrient trend
+- Interactive charts
+- Personalized weekly insights
+
+---
+
+## Testing
+
+Verified:
+
+- Weekly Analytics API
+- JWT Authentication
+- Daily aggregation
+- Weekly averages
+- Goal completion calculation
+- Trend generation
+- Empty dataset handling
+
+---
+
+## Result
+
+Users can now:
+
+- Analyze the previous seven days
+- View daily calorie trends
+- Track hydration progress
+- Monitor macronutrient intake
+- Identify their most and least active days
+- Measure consistency with fitness goals
+- Gain actionable weekly insights
+
+---
+
+## Challenges
+
+- Aggregating data across multiple collections
+- Handling days without activity
+- Calculating accurate weekly averages
+- Designing reusable analytics logic
+- Preparing data for chart visualization
+
+---
+
+## Git Commit
+
+```
+Implement Weekly Analytics module
+```
+
+---
+
 ## Next Steps
 
-- Weekly Analytics
+- Monthly Analytics
+- PDF Report Generation
+- Dark Mode
+- Deployment
+
+## Next Steps
+
 - Monthly Analytics
 - PDF Reports
 - Dark Mode
