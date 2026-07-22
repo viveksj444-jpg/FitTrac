@@ -351,6 +351,78 @@ Additional indexes may be added later to improve search performance.
 
 ---
 
+---
+
+# Weekly Analytics Module
+
+The Weekly Analytics module does not create a dedicated MongoDB collection.
+
+Instead, it aggregates data dynamically from existing collections.
+
+## Data Sources
+
+| Collection | Purpose |
+|------------|---------|
+| Users | Daily calorie goal and profile |
+| Meals | Daily nutrition records |
+| Exercises | Calories burned |
+| Waters | Daily hydration |
+
+---
+
+## Analytics Pipeline
+
+```text
+Users
+   │
+Meals
+   │
+Exercises
+   │
+Waters
+   │
+   ▼
+Analytics Controller
+   │
+   ▼
+Daily Aggregation
+   │
+   ▼
+Weekly Statistics
+   │
+   ▼
+Analytics Response
+```
+
+---
+
+## Generated Metrics
+
+The analytics engine calculates:
+
+- Calories Consumed
+- Calories Burned
+- Net Calories
+- Protein
+- Carbohydrates
+- Fat
+- Water Intake
+- Meals Logged
+- Exercises Logged
+- Goal Completion
+- Daily Averages
+- Weekly Trends
+
+---
+
+## Benefits
+
+- Live analytics
+- No redundant storage
+- Efficient aggregation
+- Scalable architecture
+- Consistent data across dashboard and reports
+
 # Future Database Enhancements
 
 Planned collections:
