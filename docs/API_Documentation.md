@@ -647,6 +647,124 @@ Authorization: Bearer YOUR_JWT_TOKEN
 
 ---
 
+# 📈 Weekly Analytics APIs
+
+The Weekly Analytics module provides a comprehensive overview of the user's fitness and nutrition data for the previous seven days.
+
+All analytics routes require JWT authentication.
+
+---
+
+## Get Weekly Analytics
+
+### Endpoint
+
+GET /api/analytics/weekly
+
+### Authentication
+
+Required
+
+### Header
+
+```text
+Authorization: Bearer YOUR_JWT_TOKEN
+```
+
+---
+
+## Description
+
+Returns weekly statistics including:
+
+- Daily Calories Consumed
+- Daily Calories Burned
+- Net Calories
+- Protein Intake
+- Carbohydrates Intake
+- Fat Intake
+- Water Intake
+- Goal Completion
+- Weekly Trends
+- Weekly Summary
+
+---
+
+## Success Response
+
+```json
+{
+  "success": true,
+  "summary": {
+    "averageCalories": 2140,
+    "averageBurned": 430,
+    "averageNetCalories": 1710,
+    "averageWater": 2450,
+    "averageProtein": 112,
+    "averageCarbs": 236,
+    "averageFat": 58,
+    "goalCompletion": 86,
+    "highestCalorieDay": "Wednesday",
+    "lowestCalorieDay": "Sunday",
+    "mostActiveDay": "Friday",
+    "leastActiveDay": "Monday",
+    "totalMeals": 31,
+    "totalExercises": 8
+  },
+  "dailyData": [
+    {
+      "day": "Monday",
+      "consumed": 2200,
+      "burned": 450,
+      "net": 1750,
+      "protein": 110,
+      "carbs": 230,
+      "fat": 55,
+      "water": 2500
+    }
+  ]
+}
+```
+
+---
+
+## Analytics Calculations
+
+Average Calories
+
+```
+Total Weekly Calories ÷ 7
+```
+
+Average Calories Burned
+
+```
+Total Weekly Burned ÷ 7
+```
+
+Net Calories
+
+```
+Calories Consumed − Calories Burned
+```
+
+Goal Completion
+
+```
+(Number of Goal Achieved Days ÷ 7) × 100
+```
+
+---
+
+## HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+|200|Weekly Analytics Generated|
+|401|Unauthorized|
+|404|No Weekly Data Found|
+|500|Internal Server Error|
+
 # 📌 HTTP Status Codes
 
 | Code | Meaning |
