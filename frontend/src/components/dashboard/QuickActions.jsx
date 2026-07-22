@@ -26,17 +26,13 @@ const actions = [
   },
   {
     title: "Exercise",
-    subtitle: "Coming Soon",
     icon: <FaRunning />,
-    onClick: () =>
-      alert("🏃 Exercise Tracker is coming soon!"),
+    to: "/add-exercise",
   },
   {
-    title: "Reports",
-    subtitle: "Coming Soon",
+    title: "View Weekly Analytics",
     icon: <FaChartBar />,
-    onClick: () =>
-      alert("📊 Reports are coming soon!"),
+    to: "/analytics/weekly",
   },
 ];
 
