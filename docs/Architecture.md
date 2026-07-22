@@ -505,6 +505,87 @@ Planned improvements include:
 
 ---
 
+---
+
+# Weekly Analytics Architecture
+
+The Weekly Analytics module aggregates historical data from multiple collections and generates performance insights for the last seven days.
+
+```text
+                 User
+                   │
+      ┌────────────┼────────────┐
+      │            │            │
+      ▼            ▼            ▼
+    Meals      Exercises      Waters
+      │            │            │
+      └────────────┼────────────┘
+                   ▼
+        Analytics Controller
+                   │
+       ┌───────────┼───────────┐
+       ▼           ▼           ▼
+ Daily Summary  Weekly Stats  Trends
+       │           │           │
+       └───────────┼───────────┘
+                   ▼
+           Weekly Analytics API
+                   │
+                   ▼
+            React Dashboard
+```
+
+---
+
+## Responsibilities
+
+The Analytics Controller is responsible for:
+
+- Fetching data for the previous seven days
+- Grouping records by day
+- Calculating daily nutrition totals
+- Calculating weekly averages
+- Calculating net calories
+- Measuring goal completion
+- Identifying trends
+- Returning analytics data to the frontend
+
+---
+
+## Weekly Analytics Flow
+
+```text
+Meals
+Exercises
+Water
+User Goal
+      │
+      ▼
+Analytics Engine
+      │
+      ▼
+Daily Aggregation
+      │
+      ▼
+Weekly Summary
+      │
+      ▼
+Trend Analysis
+      │
+      ▼
+JSON Response
+```
+
+---
+
+## Design Principles
+
+- Dynamic calculations
+- No duplicate storage
+- Modular controller design
+- Historical trend analysis
+- Reusable helper functions
+
 # Architecture Summary
 
 | Layer | Technology |
