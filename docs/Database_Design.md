@@ -396,6 +396,80 @@ Analytics Response
 
 ---
 
+---
+
+# Monthly Analytics Module
+
+The Monthly Analytics feature does not introduce a new MongoDB collection.
+
+All analytics are generated dynamically from existing data.
+
+## Collections Used
+
+| Collection | Purpose |
+|------------|---------|
+| Users | Profile and daily goals |
+| Meals | Daily nutrition |
+| Exercises | Calories burned |
+| Waters | Hydration |
+
+---
+
+## Data Flow
+
+```text
+Users
+   │
+Meals
+   │
+Exercises
+   │
+Waters
+   │
+   ▼
+Monthly Analytics Engine
+   │
+   ▼
+Monthly Statistics
+   │
+   ▼
+PDF Generator
+```
+
+---
+
+## Calculated Metrics
+
+The analytics engine computes:
+
+- Average Calories
+- Average Calories Burned
+- Average Net Calories
+- Average Protein
+- Average Carbohydrates
+- Average Fat
+- Average Water Intake
+- Total Meals
+- Total Exercises
+- Goal Completion
+- Longest Healthy Streak
+- Longest Exercise Streak
+- Hydration Streak
+- Monthly Trends
+
+---
+
+## PDF Output
+
+The generated PDF is created at runtime and is not stored in MongoDB.
+
+Benefits:
+
+- No duplicate storage
+- Real-time analytics
+- Lower database size
+- Always up-to-date reports
+
 ## Generated Metrics
 
 The analytics engine calculates:
