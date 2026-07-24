@@ -578,6 +578,109 @@ JSON Response
 
 ---
 
+---
+
+# Monthly Analytics & PDF Report Architecture
+
+The Monthly Analytics module aggregates data from multiple collections and generates detailed reports covering the previous thirty days.
+
+```text
+                    User
+                      │
+      ┌───────────────┼───────────────┐
+      │               │               │
+      ▼               ▼               ▼
+    Meals         Exercises         Waters
+      │               │               │
+      └───────────────┼───────────────┘
+                      ▼
+          Monthly Analytics Controller
+                      │
+      ┌───────────────┼────────────────┐
+      ▼               ▼                ▼
+ Daily Totals   Monthly Summary   Trend Analysis
+      │               │                │
+      └───────────────┼────────────────┘
+                      ▼
+          Monthly Analytics Response
+                      │
+                      ▼
+             PDF Generator Utility
+                      │
+                      ▼
+            Downloadable PDF Report
+                      │
+                      ▼
+                React Frontend
+```
+
+---
+
+## Components
+
+### Monthly Analytics Controller
+
+Responsible for:
+
+- Reading last 30 days of data
+- Calculating averages
+- Calculating totals
+- Finding highest and lowest values
+- Goal completion calculation
+- Trend analysis
+- Returning analytics
+
+---
+
+### PDF Generator
+
+Responsible for:
+
+- Formatting report
+- Building PDF
+- Adding user summary
+- Adding nutrition statistics
+- Adding hydration statistics
+- Adding exercise statistics
+- Adding achievements
+- Returning downloadable file
+
+---
+
+## Processing Flow
+
+```text
+Meals
+Exercises
+Water
+User
+    │
+    ▼
+Monthly Analytics
+    │
+    ▼
+Summary Generator
+    │
+    ▼
+Insight Generator
+    │
+    ▼
+PDF Generator
+    │
+    ▼
+Frontend Download
+```
+
+---
+
+## Design Principles
+
+- Modular architecture
+- Dynamic calculations
+- No duplicate storage
+- Reusable PDF utility
+- Separation of analytics and reporting logic
+
 ## Design Principles
 
 - Dynamic calculations
