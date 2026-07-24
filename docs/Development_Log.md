@@ -985,6 +985,209 @@ Implement Weekly Analytics module
 
 ---
 
+# Day 19 — Monthly Analytics & PDF Reports
+
+## Goal
+
+Develop a Monthly Analytics module and generate downloadable PDF reports summarizing the user's nutrition, exercise, hydration, and fitness progress for the previous thirty days.
+
+---
+
+## Objectives
+
+- Build Monthly Analytics API
+- Generate monthly statistics
+- Display monthly trends
+- Create PDF report generator
+- Allow users to download professional health reports
+
+---
+
+## Completed Tasks
+
+### Backend
+
+- Created Monthly Analytics Controller
+- Created Monthly Analytics Routes
+- Created Report Controller
+- Created Report Routes
+- Created PDF Generator Utility
+- Implemented Monthly Analytics API
+- Implemented PDF Download API
+- Calculated monthly summaries
+- Generated monthly insights
+
+### Frontend
+
+- Created Monthly Analytics Page
+- Added Monthly Summary Cards
+- Added Monthly Charts
+- Added Insights Section
+- Added Achievements Section
+- Added Download Report Button
+
+---
+
+## Analytics Calculated
+
+- Average Calories
+- Average Calories Burned
+- Average Net Calories
+- Average Water Intake
+- Average Protein
+- Average Carbohydrates
+- Average Fat
+- Goal Completion
+- Monthly Trends
+- Healthy Streaks
+- Exercise Streaks
+- Hydration Streaks
+- Total Meals
+- Total Exercises
+
+---
+
+## Report Contents
+
+The Monthly PDF includes:
+
+- User Information
+- Monthly Summary
+- Nutrition Summary
+- Exercise Summary
+- Hydration Summary
+- Goal Completion
+- Monthly Insights
+- Achievements
+- Report Generation Date
+
+---
+
+## APIs
+
+### Monthly Analytics
+
+```
+GET /api/analytics/monthly
+```
+
+### Download Monthly Report
+
+```
+GET /api/reports/monthly
+```
+
+---
+
+## Files Created
+
+### Backend
+
+```
+controllers/monthlyAnalyticsController.js
+controllers/reportController.js
+
+routes/monthlyAnalyticsRoutes.js
+routes/reportRoutes.js
+
+utils/pdfGenerator.js
+```
+
+### Frontend
+
+```
+pages/MonthlyAnalytics.jsx
+pages/MonthlyAnalytics.css
+
+pages/Reports.jsx
+pages/Reports.css
+
+services/monthlyAnalyticsService.js
+services/reportService.js
+
+hooks/useMonthlyAnalytics.js
+
+components/monthly/
+
+MonthlySummaryCard.jsx
+MonthlyCaloriesChart.jsx
+MonthlyMacrosChart.jsx
+MonthlyWaterChart.jsx
+MonthlyExerciseChart.jsx
+AchievementCard.jsx
+MonthlyInsights.jsx
+DownloadReportButton.jsx
+```
+
+---
+
+## Features Added
+
+- Thirty-day analytics
+- Monthly summary
+- Monthly trend analysis
+- Goal completion tracking
+- Healthy streak tracking
+- Hydration tracking
+- Exercise tracking
+- Professional PDF export
+- Downloadable monthly report
+
+---
+
+## Testing
+
+Verified:
+
+- Monthly Analytics API
+- PDF Generation
+- JWT Authentication
+- Monthly aggregation
+- Trend calculations
+- Report download
+- Empty dataset handling
+
+---
+
+## Result
+
+Users can now:
+
+- Review the previous 30 days of activity
+- Analyze nutrition and hydration trends
+- Measure goal consistency
+- Track healthy streaks
+- View achievements
+- Download a professional Monthly Health Report in PDF format
+
+---
+
+## Challenges
+
+- Aggregating data across thirty days
+- Calculating streaks accurately
+- Designing reusable PDF templates
+- Preparing analytics for visualization
+- Ensuring report accuracy
+
+---
+
+## Git Commit
+
+```
+Implement Monthly Analytics and PDF Report module
+```
+
+---
+
+## Next Steps
+
+- Dark Mode
+- UI Polish
+- Mobile Responsiveness
+- Deployment
+- Production Optimization
+
 ## Next Steps
 
 - Monthly Analytics
