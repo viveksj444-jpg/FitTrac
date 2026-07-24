@@ -756,6 +756,137 @@ Goal Completion
 
 ---
 
+# 📑 Monthly Analytics & PDF Report APIs
+
+The Monthly Analytics module provides a comprehensive overview of the user's fitness activity for the previous 30 days. Users can also generate and download a professional Monthly Health Report in PDF format.
+
+All routes require JWT authentication.
+
+---
+
+# Monthly Analytics
+
+## Endpoint
+
+GET /api/analytics/monthly
+
+### Authentication
+
+Required
+
+### Header
+
+```text
+Authorization: Bearer YOUR_JWT_TOKEN
+```
+
+---
+
+## Description
+
+Returns detailed analytics for the previous 30 days.
+
+Includes:
+
+- Calories Consumed
+- Calories Burned
+- Net Calories
+- Protein Intake
+- Carbohydrates
+- Fat Intake
+- Water Intake
+- Meals Logged
+- Exercises Logged
+- Goal Completion
+- Monthly Trends
+- Personalized Insights
+
+---
+
+## Success Response
+
+```json
+{
+  "success": true,
+  "summary": {
+    "averageCalories": 2250,
+    "averageBurned": 460,
+    "averageNetCalories": 1790,
+    "averageProtein": 118,
+    "averageCarbs": 245,
+    "averageFat": 61,
+    "averageWater": 2550,
+    "goalCompletion": 82,
+    "highestCalorieDay": "2026-08-15",
+    "lowestCalorieDay": "2026-08-02",
+    "mostActiveDay": "2026-08-21",
+    "totalMeals": 136,
+    "totalExercises": 28
+  },
+  "dailyData": [
+    {
+      "date": "2026-08-01",
+      "consumed": 2200,
+      "burned": 480,
+      "net": 1720,
+      "protein": 110,
+      "carbs": 235,
+      "fat": 58,
+      "water": 2600
+    }
+  ]
+}
+```
+
+---
+
+# Download Monthly PDF Report
+
+## Endpoint
+
+GET /api/reports/monthly
+
+### Authentication
+
+Required
+
+---
+
+## Description
+
+Generates and downloads a Monthly Health Report in PDF format.
+
+The report includes:
+
+- User Information
+- Monthly Summary
+- Nutrition Summary
+- Exercise Summary
+- Hydration Summary
+- Goal Completion
+- Personalized Insights
+- Achievements
+
+---
+
+## Response
+
+```
+Content-Type: application/pdf
+```
+
+---
+
+## HTTP Status Codes
+
+| Code | Description |
+|------|-------------|
+|200|Monthly Analytics Generated|
+|200|PDF Generated Successfully|
+|401|Unauthorized|
+|404|No Monthly Data Found|
+|500|Internal Server Error|
+
 ## HTTP Status Codes
 
 | Code | Description |
