@@ -13,6 +13,8 @@ import AddExercise from "./pages/AddExercise";
 import WaterTracker from "./pages/WaterTracker";
 import Recommendations from "./pages/Recommendations";
 import WeeklyAnalytics from "./pages/WeeklyAnalytics";
+import MonthlyAnalytics from "./pages/MonthlyAnalytics";
+import Reports from "./pages/Reports";
 
 import ProtectedRoute from "./routes/ProtectedRoute";
 
@@ -90,6 +92,24 @@ function App() {
           element={
             <ProtectedRoute>
               <WeeklyAnalytics />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/analytics/monthly"
+          element={
+            <ProtectedRoute>
+              <MonthlyAnalytics />
+            </ProtectedRoute>
+          }
+        />
+
+        <Route
+          path="/reports/monthly"
+          element={
+            <ProtectedRoute>
+              <Reports />
             </ProtectedRoute>
           }
         />

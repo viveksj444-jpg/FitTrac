@@ -5,6 +5,7 @@ import {
   FaRunning,
   FaChartBar,
   FaLightbulb,
+  FaFilePdf,
 } from "react-icons/fa";
 import ActionButton from "./ActionButton";
 
@@ -33,6 +34,16 @@ const actions = [
     title: "View Weekly Analytics",
     icon: <FaChartBar />,
     to: "/analytics/weekly",
+  },
+  {
+    title: "Monthly Analytics",
+    icon: <FaChartBar />,
+    to: "/analytics/monthly",
+  },
+  {
+    title: "Download Monthly Report",
+    icon: <FaFilePdf />,
+    to: "/reports/monthly",
   },
 ];
 

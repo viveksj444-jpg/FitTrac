@@ -15,6 +15,8 @@ const exerciseRoutes = require("./routes/exerciseRoutes");
 const waterRoutes = require("./routes/waterRoutes");
 const recommendationRoutes = require("./routes/recommendationRoutes");
 const analyticsRoutes = require("./routes/analyticsRoutes");
+const monthlyAnalyticsRoutes = require("./routes/monthlyAnalyticsRoutes");
+const reportRoutes = require("./routes/reportRoutes");
 
 const app = express();
 
@@ -41,6 +43,8 @@ app.use("/api/exercises", exerciseRoutes);
 app.use("/api/water", waterRoutes);
 app.use("/api/recommendations", recommendationRoutes);
 app.use("/api/analytics", analyticsRoutes);
+app.use("/api/analytics", monthlyAnalyticsRoutes);
+app.use("/api/reports", reportRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
